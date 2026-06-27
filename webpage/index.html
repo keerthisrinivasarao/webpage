@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cezoo Prints</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+}
+
+body{
+    background:#ffffff;
+}
+
+/* MAIN HERO */
+.hero{
+    width:100%;
+    height:560px;
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(180deg,#159cff 0%,#36adff 55%,#8ed8ff 100%);
+}
+
+/* SAFE TEXT */
+.security-text{
+    position:absolute;
+    top:62px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:18px;
+    letter-spacing:9px;
+    color:rgba(255,255,255,0.75);
+    font-weight:800;
+    text-transform:uppercase;
+    white-space:nowrap;
+    z-index:10;
+}
+
+.security-text span{
+    margin:0 12px;
+}
+
+/* TITLE */
+.title-box{
+    position:absolute;
+    top:108px;
+    left:50%;
+    transform:translateX(-50%);
+    text-align:left;
+    width:max-content;
+    z-index:40;
+}
+
+.title-box h1{
+    font-size:72px;
+    color:#ffffff;
+    font-weight:900;
+    letter-spacing:-3px;
+    white-space:nowrap;
+}
+
+/* IN 4 MINS */
+.time-label{
+    display:block;
+    width:max-content;
+    margin:7px 0 0 auto;
+    background:#fff179;
+    color:#111;
+    font-size:22px;
+    font-weight:800;
+    padding:7px 18px;
+    transform:rotate(-5deg);
+    position:relative;
+    right:-35px;
+    z-index:45;
+    clip-path:polygon(
+        5% 0%, 95% 0%, 100% 18%, 96% 35%,
+        100% 55%, 95% 75%, 100% 100%, 5% 100%,
+        0% 82%, 4% 62%, 0% 40%, 5% 20%
+    );
+}
+
+/* WHITE OVAL */
+.white-oval{
+    position:absolute;
+    left:50%;
+    bottom:-85px;
+    transform:translateX(-50%);
+    width:145%;
+    height:285px;
+    background:#ffffff;
+    border-radius:50% 50% 0 0 / 40% 40% 0 0;
+    box-shadow:0 -14px 35px rgba(255,255,255,0.55);
+    z-index:2;
+}
+
+/* PRINTER IMAGE */
+.printer-box{
+    position:absolute;
+    left:50%;
+    bottom:62px;
+    transform:translateX(-50%);
+    width:275px;
+    height:220px;
+    z-index:12;
+    background:transparent;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.printer-img{
+    width:115%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+    background:transparent;
+    mix-blend-mode:multiply;
+    filter:drop-shadow(0 14px 18px rgba(0,0,0,0.22));
+}
+
+/* SCISSOR BESIDE PRINTER */
+.hero-scissor{
+    position:absolute;
+    left:calc(50% - 225px);
+    bottom:145px;
+    font-size:72px;
+    transform:rotate(-28deg);
+    z-index:20;
+    filter:drop-shadow(0 8px 10px rgba(0,0,0,0.16));
+}
+
+/* OFFER SECTION */
+.offer-section{
+    width:100%;
+    background:#eaf7ff;
+    padding:24px 0 42px;
+    margin-top:-42px;
+    position:relative;
+    z-index:40;
+}
+
+/* CURVED RECTANGULAR BOX */
+.offer-card{
+    width:88%;
+    max-width:600px;
+    margin:0 auto;
+    background:linear-gradient(180deg,#ffffff 0%,#f9fdff 100%);
+    border-radius:34px;
+    padding:25px 24px 21px;
+    border:2.5px solid #9cddff;
+    box-shadow:
+        0 18px 42px rgba(21,156,255,0.28),
+        0 7px 18px rgba(0,0,0,0.10),
+        inset 0 0 0 1px rgba(255,255,255,0.9);
+    position:relative;
+    overflow:hidden;
+}
+
+.offer-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:7px;
+    background:linear-gradient(90deg,#159cff,#62c7ff,#159cff);
+    border-radius:34px 34px 0 0;
+}
+
+/* FREE IMAGE */
+.free-img-box{
+    position:absolute;
+    top:20px;
+    right:22px;
+    width:145px;
+    height:110px;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+}
+
+.free-img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+/* CARD CONTENT */
+.offer-content{
+    position:relative;
+    z-index:5;
+    padding-right:155px;
+}
+
+.offer-title{
+    font-size:23px;
+    font-weight:900;
+    color:#111827;
+    margin-bottom:15px;
+    line-height:1;
+    white-space:nowrap;
+    letter-spacing:-0.6px;
+}
+
+.offer-title span{
+    position:relative;
+}
+
+.offer-title span::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:100%;
+    height:4px;
+    background:#facc15;
+    border-radius:20px;
+    transform:rotate(-3deg);
+}
+
+.offer-list{
+    list-style:none;
+    margin-bottom:17px;
+}
+
+.offer-list li{
+    font-size:19px;
+    color:#555;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+/* UPLOAD BUTTON */
+.upload-btn-wrap{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:8px;
+}
+
+.upload-btn{
+    width:72%;
+    max-width:340px;
+    height:50px;
+    border:none;
+    border-radius:16px;
+    background:#0757ff;
+    color:#ffffff;
+    font-size:19px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 8px 18px rgba(7,87,255,0.25);
+    white-space:nowrap;
+    padding:0 14px;
+}
+
+.upload-btn:active{
+    transform:scale(.97);
+}
+
+.offer-note{
+    text-align:center;
+    color:#666;
+    font-size:13.5px;
+    font-weight:600;
+    margin-top:14px;
+    line-height:1.35;
+}
+
+/* UPLOAD PROGRESS */
+.upload-status{
+    width:100%;
+    max-width:340px;
+    margin:14px auto 0;
+    display:none;
+}
+
+.upload-status.show{
+    display:block;
+}
+
+.upload-message{
+    text-align:center;
+    font-size:13px;
+    font-weight:900;
+    color:#0757ff;
+    margin-bottom:8px;
+}
+
+.upload-message.success{
+    color:#16a34a;
+}
+
+.upload-message.error{
+    color:#ef4444;
+}
+
+.progress-track{
+    width:100%;
+    height:10px;
+    background:#e5e7eb;
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:#0757ff;
+    border-radius:30px;
+    transition:width .2s ease;
+}
+
+#fileInput{
+    display:none;
+}
+
+/* WE PROMISE SECTION */
+.promise-section{
+    width:100%;
+    background:#ffffff;
+    padding:30px 0 28px;
+    position:relative;
+    z-index:35;
+    overflow:hidden;
+}
+
+.promise-wrap{
+    width:92%;
+    max-width:650px;
+    margin:0 auto;
+    text-align:center;
+    position:relative;
+}
+
+.promise-title{
+    font-size:22px;
+    font-weight:900;
+    color:#34343c;
+    letter-spacing:5px;
+    text-align:center;
+    position:relative;
+    display:inline-block;
+    padding-bottom:12px;
+    line-height:1.3;
+}
+
+.promise-title::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%) rotate(-1deg);
+    width:120px;
+    height:3px;
+    background:#159cff;
+    border-radius:30px;
+}
+
+/* PROMISE DESIGN BOARD */
+.promise-board{
+    width:100%;
+    max-width:560px;
+    min-height:310px;
+    margin:28px auto 0;
+    position:relative;
+}
+
+.promise-top{
+    display:flex;
+    justify-content:center;
+    gap:34px;
+    position:relative;
+    z-index:5;
+}
+
+.promise-note{
+    width:180px;
+    min-height:145px;
+    background:#ffec68;
+    border-radius:5px;
+    padding:20px 18px 18px;
+    text-align:left;
+    position:relative;
+    box-shadow:0 7px 14px rgba(0,0,0,0.10);
+}
+
+.promise-note.safety::after{
+    content:"";
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:44px;
+    height:44px;
+    background:#fff8bb;
+    clip-path:polygon(100% 0,0 100%,100% 100%);
+    opacity:.95;
+}
+
+.promise-note.safety::before{
+    content:"";
+    position:absolute;
+    top:4px;
+    right:-14px;
+    width:38px;
+    height:20px;
+    background:#ff8f73;
+    border-radius:3px;
+    transform:rotate(10deg);
+    opacity:.9;
+}
+
+.promise-icon{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#f6d936;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+    margin-bottom:13px;
+}
+
+.promise-note h3,
+.nopeek-card h3{
+    color:#25252b;
+    font-size:21px;
+    font-weight:900;
+    margin-bottom:6px;
+    line-height:1;
+}
+
+.promise-note p,
+.nopeek-card p{
+    color:#333333;
+    font-size:15.5px;
+    font-weight:600;
+    line-height:1.25;
+}
+
+/* NO PEEK POLICY CARD */
+.nopeek-card{
+    position:absolute;
+    left:50%;
+    bottom:8px;
+    transform:translateX(-50%) rotate(-5deg);
+    width:320px;
+    min-height:92px;
+    background:#ffec68;
+    border-radius:4px;
+    padding:17px 20px 15px 88px;
+    text-align:left;
+    box-shadow:0 8px 16px rgba(0,0,0,.11);
+    z-index:8;
+}
+
+.nopeek-card .promise-icon{
+    position:absolute;
+    left:28px;
+    top:23px;
+    margin:0;
+}
+
+/* DECORATIONS */
+.scissor{
+    position:absolute;
+    left:12px;
+    bottom:72px;
+    font-size:78px;
+    transform:rotate(-28deg);
+    z-index:4;
+}
+
+.tape{
+    position:absolute;
+    left:25px;
+    bottom:8px;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:11px solid #f0c54f;
+    z-index:3;
+}
+
+.photo-card{
+    position:absolute;
+    right:18px;
+    bottom:75px;
+    width:68px;
+    height:82px;
+    background:#e7e7ed;
+    border-radius:3px;
+    transform:rotate(13deg);
+    padding:8px;
+    box-shadow:0 8px 15px rgba(0,0,0,.12);
+    z-index:4;
+}
+
+.photo-inner{
+    width:100%;
+    height:100%;
+    background:#ffffff;
+    position:relative;
+    overflow:hidden;
+}
+
+.photo-inner::before{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:75%;
+    height:45%;
+    background:#ff956e;
+    clip-path:polygon(0 100%,35% 25%,68% 70%,100% 25%,100% 100%);
+}
+
+.photo-inner::after{
+    content:"";
+    position:absolute;
+    right:10px;
+    top:22px;
+    width:19px;
+    height:19px;
+    border-radius:50%;
+    background:#159cff;
+}
+
+.spark{
+    position:absolute;
+    right:95px;
+    bottom:35px;
+    width:45px;
+    height:35px;
+    z-index:3;
+}
+
+.spark span{
+    position:absolute;
+    width:15px;
+    height:3px;
+    background:#f2c745;
+    border-radius:20px;
+}
+
+.spark span:nth-child(1){
+    right:0;
+    top:3px;
+    transform:rotate(25deg);
+}
+
+.spark span:nth-child(2){
+    right:10px;
+    top:16px;
+    transform:rotate(78deg);
+}
+
+.spark span:nth-child(3){
+    right:27px;
+    top:25px;
+    transform:rotate(25deg);
+}
+
+/* FAQ SECTION */
+.faq-section{
+    width:100%;
+    background:#ffffff;
+    padding:8px 0 0;
+}
+
+.faq-title-wrap{
+    width:90%;
+    max-width:780px;
+    margin:0 auto 10px;
+    text-align:left;
+}
+
+.faq-title{
+    display:inline-block;
+    font-size:23px;
+    font-weight:900;
+    color:#25252b;
+    letter-spacing:1px;
+    position:relative;
+    padding-bottom:9px;
+}
+
+.faq-title::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:48px;
+    height:3px;
+    background:#159cff;
+    border-radius:30px;
+}
+
+.faq-wrap{
+    width:90%;
+    max-width:780px;
+    margin:0 auto;
+    border-top:1px solid #d9d9d9;
+}
+
+.faq-item{
+    border-bottom:1px solid #d9d9d9;
+}
+
+.faq-question{
+    width:100%;
+    min-height:70px;
+    border:none;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    text-align:left;
+    cursor:pointer;
+    padding:15px 6px 15px 0;
+}
+
+.faq-question span{
+    color:#2c2c31;
+    font-size:20px;
+    font-weight:900;
+    line-height:1.3;
+}
+
+.faq-arrow{
+    font-size:25px;
+    color:#006fe6;
+    font-weight:900;
+    transition:.25s;
+    flex-shrink:0;
+}
+
+.faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    color:#555;
+    font-size:14px;
+    line-height:1.5;
+    font-weight:600;
+}
+
+.faq-answer p{
+    padding:0 45px 16px 0;
+}
+
+.faq-item.active .faq-answer{
+    max-height:160px;
+}
+
+.faq-item.active .faq-arrow{
+    transform:rotate(180deg);
+}
+
+/* PAPER BANNER */
+.paper-banner{
+    width:100%;
+    margin-top:25px;
+    min-height:360px;
+    background:
+        linear-gradient(135deg,rgba(255,255,255,.85),rgba(240,240,248,.7)),
+        radial-gradient(circle at 50% 35%,rgba(255,255,255,.9),rgba(238,238,246,.95));
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:35px 20px 45px;
+}
+
+.paper-banner::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(90deg,rgba(0,0,0,.025) 1px,transparent 1px),
+        linear-gradient(0deg,rgba(0,0,0,.025) 1px,transparent 1px);
+    background-size:42px 42px;
+    opacity:.45;
+}
+
+.ctrl-key{
+    position:absolute;
+    top:48px;
+    left:50%;
+    transform:translateX(-50%) rotate(-8deg);
+    width:142px;
+    height:96px;
+    background:#2d2d2f;
+    border-radius:12px;
+    box-shadow:0 14px 24px rgba(0,0,0,.22);
+    z-index:3;
+    padding:15px 12px;
+}
+
+.ctrl-key::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:-38px;
+    width:18px;
+    height:52px;
+    background:#1f1f21;
+    border-radius:12px;
+    transform:translateX(-50%) rotate(-5deg);
+}
+
+.key-row{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+}
+
+.key{
+    width:54px;
+    height:47px;
+    background:#f4f4f4;
+    border-radius:7px;
+    box-shadow:inset 0 -4px 0 rgba(0,0,0,.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#333;
+    font-size:18px;
+    font-weight:900;
+}
+
+.key-logo{
+    margin:8px auto 0;
+    width:76px;
+    height:21px;
+    border:2px solid #ffffff;
+    color:#ffffff;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.paper-text{
+    position:relative;
+    z-index:4;
+    text-align:center;
+    margin-top:125px;
+}
+
+.paper-text h2{
+    font-size:36px;
+    line-height:1.05;
+    color:#77777c;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.paper-text h2 span{
+    display:block;
+    font-size:48px;
+    color:#77777c;
+}
+
+.paper-text p{
+    margin-top:20px;
+    font-size:16px;
+    color:#808080;
+    font-weight:800;
+}
+
+.paper-text p span{
+    color:#006fe6;
+    font-size:20px;
+}
+
+/* PC VIEW */
+@media(min-width:769px){
+
+    .offer-section{
+        background:#eaf7ff;
+        padding:28px 0 46px;
+        margin-top:-42px;
+    }
+
+    .offer-card{
+        width:82%;
+        max-width:950px;
+        min-height:220px;
+        border-radius:32px;
+        padding:32px 42px 28px;
+        background:#ffffff;
+        border:3px solid #9cddff;
+        box-shadow:
+            0 18px 45px rgba(21,156,255,0.25),
+            0 8px 20px rgba(0,0,0,0.10);
+        overflow:hidden;
+    }
+
+    .offer-card::before{
+        height:8px;
+        border-radius:32px 32px 0 0;
+    }
+
+    .offer-content{
+        padding-right:220px;
+    }
+
+    .free-img-box{
+        width:185px;
+        height:140px;
+        top:34px;
+        right:42px;
+    }
+
+    .offer-title{
+        font-size:30px;
+        margin-bottom:20px;
+    }
+
+    .offer-list li{
+        font-size:21px;
+    }
+
+    .upload-btn{
+        max-width:360px;
+        height:54px;
+        font-size:21px;
+    }
+
+    .offer-note{
+        font-size:14.5px;
+        margin-top:16px;
+    }
+}
+
+/* MOBILE VIEW */
+@media(max-width:768px){
+
+    .hero{
+        height:490px;
+    }
+
+    .security-text{
+        top:58px;
+        font-size:13px;
+        letter-spacing:5px;
+    }
+
+    .security-text span{
+        margin:0 6px;
+    }
+
+    .title-box{
+        top:96px;
+        width:max-content;
+    }
+
+    .title-box h1{
+        font-size:42px;
+        letter-spacing:-2px;
+    }
+
+    .time-label{
+        margin:7px 0 0 auto;
+        font-size:15px;
+        padding:5px 13px;
+        right:-22px;
+        transform:rotate(-5deg);
+    }
+
+    .white-oval{
+        width:160%;
+        height:235px;
+        bottom:-75px;
+    }
+
+    .printer-box{
+        width:215px;
+        height:170px;
+        bottom:90px;
+    }
+
+    .printer-img{
+        width:116%;
+    }
+
+    .hero-scissor{
+        left:calc(50% - 155px);
+        bottom:128px;
+        font-size:48px;
+        transform:rotate(-28deg);
+    }
+
+    .offer-section{
+        margin-top:-70px;
+        padding:16px 0 10px;
+        background:#eaf7ff;
+    }
+
+    .offer-card{
+        width:86%;
+        max-width:350px;
+        border-radius:30px;
+        padding:19px 14px 16px;
+        border:2.5px solid #9cddff;
+        box-shadow:
+            0 16px 34px rgba(21,156,255,0.25),
+            0 6px 15px rgba(0,0,0,0.10);
+    }
+
+    .offer-card::before{
+        height:6px;
+    }
+
+    .free-img-box{
+        width:66px;
+        height:56px;
+        top:16px;
+        right:8px;
+    }
+
+    .offer-content{
+        padding-right:76px;
+    }
+
+    .offer-title{
+        font-size:15.5px;
+        line-height:1;
+        white-space:nowrap;
+        margin-bottom:13px;
+        letter-spacing:-0.5px;
+    }
+
+    .offer-title span::after{
+        height:3px;
+        bottom:-3px;
+    }
+
+    .offer-list{
+        margin-bottom:15px;
+    }
+
+    .offer-list li{
+        font-size:13.2px;
+        margin-bottom:6px;
+    }
+
+    .upload-btn{
+        width:100%;
+        max-width:200px;
+        height:41px;
+        border-radius:13px;
+        font-size:14.5px;
+        white-space:nowrap;
+        padding:0 10px;
+    }
+
+    .upload-status{
+        max-width:210px;
+        margin-top:12px;
+    }
+
+    .upload-message{
+        font-size:11.5px;
+    }
+
+    .progress-track{
+        height:8px;
+    }
+
+    .offer-note{
+        font-size:10.8px;
+        line-height:1.35;
+        margin-top:11px;
+        padding:0 4px;
+    }
+
+    .promise-section{
+        padding:14px 0 24px;
+        margin-top:0;
+    }
+
+    .promise-title{
+        font-size:18px;
+        letter-spacing:4px;
+        padding-bottom:10px;
+    }
+
+    .promise-title::after{
+        width:96px;
+        height:3px;
+    }
+
+    .promise-board{
+        max-width:330px;
+        min-height:300px;
+        margin-top:20px;
+    }
+
+    .promise-top{
+        gap:12px;
+    }
+
+    .promise-note{
+        width:128px;
+        min-height:112px;
+        padding:13px 11px 12px;
+    }
+
+    .promise-note.safety::before{
+        width:28px;
+        height:15px;
+        right:-8px;
+        top:4px;
+    }
+
+    .promise-note.safety::after{
+        width:34px;
+        height:34px;
+    }
+
+    .promise-icon{
+        width:29px;
+        height:29px;
+        font-size:14px;
+        margin-bottom:9px;
+    }
+
+    .promise-note h3,
+    .nopeek-card h3{
+        font-size:16.5px;
+        margin-bottom:5px;
+    }
+
+    .promise-note p,
+    .nopeek-card p{
+        font-size:11.8px;
+        line-height:1.25;
+    }
+
+    .nopeek-card{
+        width:220px;
+        min-height:72px;
+        padding:12px 12px 11px 62px;
+        bottom:42px;
+    }
+
+    .nopeek-card .promise-icon{
+        left:19px;
+        top:20px;
+    }
+
+    .scissor{
+        left:8px;
+        bottom:98px;
+        font-size:48px;
+        transform:rotate(-28deg);
+    }
+
+    .tape{
+        left:22px;
+        bottom:38px;
+        width:34px;
+        height:34px;
+        border-width:8px;
+    }
+
+    .photo-card{
+        right:12px;
+        bottom:98px;
+        width:47px;
+        height:57px;
+        padding:6px;
+    }
+
+    .photo-inner::after{
+        right:7px;
+        top:15px;
+        width:14px;
+        height:14px;
+    }
+
+    .spark{
+        right:56px;
+        bottom:61px;
+        transform:scale(.62);
+    }
+
+    .faq-section{
+        padding-top:4px;
+    }
+
+    .faq-title-wrap{
+        width:91%;
+        margin-bottom:8px;
+        text-align:left;
+    }
+
+    .faq-title{
+        font-size:20px;
+        padding-bottom:8px;
+    }
+
+    .faq-title::after{
+        width:42px;
+        height:3px;
+    }
+
+    .faq-wrap{
+        width:91%;
+    }
+
+    .faq-question{
+        min-height:62px;
+        padding:13px 0;
+        gap:12px;
+    }
+
+    .faq-question span{
+        font-size:17px;
+        line-height:1.3;
+    }
+
+    .faq-arrow{
+        font-size:22px;
+    }
+
+    .faq-answer{
+        font-size:12.5px;
+    }
+
+    .faq-answer p{
+        padding:0 28px 14px 0;
+    }
+
+    .paper-banner{
+        margin-top:22px;
+        min-height:330px;
+        padding:30px 15px 42px;
+    }
+
+    .ctrl-key{
+        width:122px;
+        height:84px;
+        top:48px;
+        padding:13px 10px;
+    }
+
+    .ctrl-key::before{
+        height:46px;
+        top:-35px;
+        width:16px;
+    }
+
+    .key{
+        width:46px;
+        height:41px;
+        font-size:15px;
+    }
+
+    .key-logo{
+        width:68px;
+        height:19px;
+        font-size:9px;
+    }
+
+    .paper-text{
+        margin-top:118px;
+    }
+
+    .paper-text h2{
+        font-size:29px;
+    }
+
+    .paper-text h2 span{
+        font-size:40px;
+    }
+
+    .paper-text p{
+        font-size:13px;
+        margin-top:16px;
+    }
+
+    .paper-text p span{
+        font-size:17px;
+    }
+}
+
+/* SMALL MOBILE */
+@media(max-width:420px){
+
+    .hero{
+        height:470px;
+    }
+
+    .title-box{
+        top:94px;
+        width:max-content;
+    }
+
+    .title-box h1{
+        font-size:38px;
+    }
+
+    .security-text{
+        top:57px;
+        font-size:12px;
+        letter-spacing:4px;
+    }
+
+    .time-label{
+        font-size:14px;
+        padding:5px 12px;
+        margin:6px 0 0 auto;
+        right:-18px;
+    }
+
+    .printer-box{
+        width:200px;
+        height:160px;
+        bottom:82px;
+    }
+
+    .hero-scissor{
+        left:calc(50% - 145px);
+        bottom:122px;
+        font-size:44px;
+    }
+
+    .white-oval{
+        height:225px;
+        bottom:-72px;
+    }
+
+    .offer-section{
+        margin-top:-66px;
+        padding:14px 0 8px;
+        background:#eaf7ff;
+    }
+
+    .offer-card{
+        width:86%;
+        max-width:335px;
+        border-radius:28px;
+        padding:18px 13px 15px;
+    }
+
+    .free-img-box{
+        width:62px;
+        height:52px;
+        top:15px;
+        right:7px;
+    }
+
+    .offer-content{
+        padding-right:70px;
+    }
+
+    .offer-title{
+        font-size:14.5px;
+        letter-spacing:-0.5px;
+    }
+
+    .offer-list li{
+        font-size:12.5px;
+    }
+
+    .upload-btn{
+        max-width:188px;
+        height:39px;
+        font-size:13.5px;
+        white-space:nowrap;
+    }
+
+    .offer-note{
+        font-size:10.4px;
+    }
+
+    .promise-section{
+        padding:13px 0 22px;
+    }
+
+    .promise-board{
+        max-width:315px;
+        min-height:288px;
+        margin-top:18px;
+    }
+
+    .promise-top{
+        gap:10px;
+    }
+
+    .promise-note{
+        width:122px;
+        min-height:108px;
+        padding:12px 10px 11px;
+    }
+
+    .promise-note h3,
+    .nopeek-card h3{
+        font-size:15.5px;
+    }
+
+    .promise-note p,
+    .nopeek-card p{
+        font-size:11.2px;
+    }
+
+    .nopeek-card{
+        width:210px;
+        bottom:40px;
+    }
+
+    .faq-title{
+        font-size:19px;
+    }
+
+    .faq-question span{
+        font-size:16px;
+    }
+
+    .faq-question{
+        min-height:58px;
+    }
+
+    .paper-text h2{
+        font-size:27px;
+    }
+
+    .paper-text h2 span{
+        font-size:37px;
+    }
+}
+
+/* VERY SMALL MOBILE */
+@media(max-width:360px){
+
+    .hero{
+        height:455px;
+    }
+
+    .title-box{
+        top:92px;
+        width:max-content;
+    }
+
+    .title-box h1{
+        font-size:34px;
+    }
+
+    .time-label{
+        font-size:13px;
+        padding:4px 11px;
+        margin:6px 0 0 auto;
+        right:-14px;
+    }
+
+    .printer-box{
+        width:190px;
+        height:150px;
+        bottom:78px;
+    }
+
+    .hero-scissor{
+        left:calc(50% - 135px);
+        bottom:112px;
+        font-size:40px;
+    }
+
+    .offer-section{
+        margin-top:-62px;
+        padding:14px 0 8px;
+    }
+
+    .offer-card{
+        width:85%;
+        max-width:310px;
+        border-radius:26px;
+        padding:17px 12px 14px;
+    }
+
+    .free-img-box{
+        width:56px;
+        height:48px;
+        top:14px;
+        right:6px;
+    }
+
+    .offer-content{
+        padding-right:64px;
+    }
+
+    .offer-title{
+        font-size:13.2px;
+        letter-spacing:-0.5px;
+    }
+
+    .offer-list li{
+        font-size:11.8px;
+    }
+
+    .upload-btn{
+        max-width:174px;
+        height:37px;
+        font-size:12.8px;
+        white-space:nowrap;
+    }
+
+    .promise-section{
+        padding:12px 0 20px;
+    }
+
+    .promise-title{
+        font-size:17px;
+    }
+
+    .promise-board{
+        max-width:295px;
+        min-height:280px;
+        margin-top:17px;
+    }
+
+    .promise-note{
+        width:113px;
+        min-height:104px;
+        padding:11px 9px 10px;
+    }
+
+    .promise-note h3,
+    .nopeek-card h3{
+        font-size:14.5px;
+    }
+
+    .promise-note p,
+    .nopeek-card p{
+        font-size:10.5px;
+    }
+
+    .nopeek-card{
+        width:198px;
+        padding-left:58px;
+    }
+
+    .scissor{
+        font-size:42px;
+    }
+
+    .photo-card{
+        width:42px;
+        height:52px;
+    }
+
+    .faq-title{
+        font-size:18px;
+    }
+
+    .faq-question span{
+        font-size:14.8px;
+    }
+
+    .faq-question{
+        min-height:54px;
+    }
+
+    .paper-banner{
+        min-height:300px;
+    }
+
+    .paper-text h2{
+        font-size:24px;
+    }
+
+    .paper-text h2 span{
+        font-size:33px;
+    }
+
+    .paper-text p{
+        font-size:12px;
+    }
+}
+.bottom-upload{
+    position:fixed;
+    left:50%;
+    bottom:18px;
+    transform:translate(-50%,130%);
+    width:92%;
+    max-width:430px;
+    background:#ffffff;
+    border-radius:22px;
+    padding:14px 15px 15px;
+    box-shadow:0 14px 45px rgba(0,0,0,0.22);
+    z-index:99999;
+    transition:.35s ease;
+    border:1px solid rgba(0,0,0,0.08);
+}
+
+.bottom-upload.show{
+    transform:translate(-50%,0);
+}
+
+.bottom-upload-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:10px;
+}
+
+.upload-round-icon{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#eef5ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+    flex-shrink:0;
+}
+
+.bottom-upload-text{
+    flex:1;
+    min-width:0;
+}
+
+.bottom-upload-title{
+    font-size:14px;
+    font-weight:900;
+    color:#111827;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.bottom-upload-sub{
+    font-size:12px;
+    font-weight:700;
+    color:#6b7280;
+    margin-top:2px;
+}
+
+.upload-percent{
+    font-size:15px;
+    font-weight:900;
+    color:#0757ff;
+    flex-shrink:0;
+}
+
+.bottom-progress-track{
+    width:100%;
+    height:8px;
+    background:#e5e7eb;
+    border-radius:50px;
+    overflow:hidden;
+}
+
+.bottom-progress-fill{
+    width:0%;
+    height:100%;
+    background:#0757ff;
+    border-radius:50px;
+    transition:width .2s ease;
+}
+
+.bottom-upload.success .upload-round-icon{
+    background:#dcfce7;
+}
+
+.bottom-upload.success .upload-percent,
+.bottom-upload.success .bottom-upload-sub{
+    color:#16a34a;
+}
+
+.bottom-upload.success .bottom-progress-fill{
+    background:#16a34a;
+}
+
+.bottom-upload.error .upload-round-icon{
+    background:#fee2e2;
+}
+
+.bottom-upload.error .upload-percent,
+.bottom-upload.error .bottom-upload-sub{
+    color:#ef4444;
+}
+
+.bottom-upload.error .bottom-progress-fill{
+    background:#ef4444;
+}
+
+@media(max-width:768px){
+    .bottom-upload{
+        bottom:12px;
+        border-radius:20px;
+        padding:13px 13px 14px;
+    }
+
+    .upload-round-icon{
+        width:38px;
+        height:38px;
+        font-size:19px;
+    }
+
+    .bottom-upload-title{
+        font-size:13px;
+    }
+
+    .bottom-upload-sub{
+        font-size:11px;
+    }
+
+    .upload-percent{
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+    <div class="security-text">
+        SAFE <span>✦</span> SECURE <span>✦</span> INSTANT
+    </div>
+
+    <div class="title-box">
+        <h1>Cezoo Prints</h1>
+        <div class="time-label">in 4 mins</div>
+    </div>
+
+    <div class="white-oval"></div>
+
+    <div class="hero-scissor">✂️</div>
+
+    <div class="printer-box">
+        <img src="xerox.png" alt="Printer" class="printer-img">
+    </div>
+
+</section>
+
+<section class="offer-section">
+    <div class="offer-card">
+
+        <div class="free-img-box">
+            <img src="paper.png" alt="Free Offer" class="free-img">
+        </div>
+
+        <div class="offer-content">
+            <h2 class="offer-title">Get your first print <span>FREE</span></h2>
+
+            <ul class="offer-list">
+                <li>• A4 size prints</li>
+                <li>• 75 GSM paper quality</li>
+            </ul>
+
+            <div class="upload-btn-wrap">
+                <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                    Upload Document
+                </button>
+            </div>
+
+            <div class="upload-status" id="uploadStatus">
+                <div class="upload-message" id="uploadMessage"></div>
+                <div class="progress-track" id="progressTrack">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <p class="offer-note">
+                *Offer applies to 10 pages of BW or ₹30 max discount on color
+            </p>
+        </div>
+<input type="file" id="fileInput" multiple accept=".pdf,image/*">
+    </div>
+</section>
+
+<section class="promise-section">
+    <div class="promise-wrap">
+
+        <h2 class="promise-title">WE PROMISE</h2>
+
+        <div class="promise-board">
+
+            <div class="promise-top">
+                <div class="promise-note safety">
+                    <div class="promise-icon">🛡️</div>
+                    <h3>Safety</h3>
+                    <p>Documents are deleted once printed!</p>
+                </div>
+
+                <div class="promise-note security">
+                    <div class="promise-icon">🔒</div>
+                    <h3>Security</h3>
+                    <p>Prints are sealed before delivery</p>
+                </div>
+            </div>
+
+            <div class="scissor">✂️</div>
+            <div class="tape"></div>
+
+            <div class="photo-card">
+                <div class="photo-inner"></div>
+            </div>
+
+            <div class="nopeek-card">
+                <div class="promise-icon">🙈</div>
+                <h3>No Peek Policy</h3>
+                <p>Our staff will not look at your Documents</p>
+            </div>
+
+            <div class="spark">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="faq-section">
+
+    <div class="faq-title-wrap">
+        <h2 class="faq-title">FAQ</h2>
+    </div>
+
+    <div class="faq-wrap">
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Are my documents/photos stored and handled securely?</span>
+                <b class="faq-arrow">⌄</b>
+            </button>
+            <div class="faq-answer">
+                <p>Yes. Your files are handled securely and deleted once printing is completed.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>What is the max number of files/photos I can upload?</span>
+                <b class="faq-arrow">⌄</b>
+            </button>
+            <div class="faq-answer">
+                <p>You can upload multiple files/photos at once. For large orders, upload files one by one for smooth processing.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>I have an issue with my order, what now?</span>
+                <b class="faq-arrow">⌄</b>
+            </button>
+            <div class="faq-answer">
+                <p>You can contact support with your order details. Our team will help you quickly.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>How long does it take to get my order delivered?</span>
+                <b class="faq-arrow">⌄</b>
+            </button>
+            <div class="faq-answer">
+                <p>Your print order will be delivered as quickly as possible, usually within minutes depending on location.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="paper-banner">
+        <div class="ctrl-key">
+            <div class="key-row">
+                <div class="key">Ctrl</div>
+                <div class="key">P</div>
+            </div>
+            <div class="key-logo">Cezoo Prints</div>
+        </div>
+
+        <div class="paper-text">
+            <h2>
+                Certain things
+                <span>deserve paper!</span>
+            </h2>
+            <p><span>♥</span> Perfect it with Cezoo Prints</p>
+        </div>
+    </div>
+</section>
+<div class="bottom-upload" id="bottomUpload">
+    <div class="bottom-upload-top">
+        <div class="upload-round-icon" id="uploadIcon">📄</div>
+
+        <div class="bottom-upload-text">
+            <div class="bottom-upload-title" id="bottomUploadTitle">Uploading document</div>
+            <div class="bottom-upload-sub" id="bottomUploadSub">Preparing your file...</div>
+        </div>
+
+        <div class="upload-percent" id="uploadPercent">0%</div>
+    </div>
+
+    <div class="bottom-progress-track">
+        <div class="bottom-progress-fill" id="bottomProgressFill"></div>
+    </div>
+</div>
+<script>
+const fileInput = document.getElementById("fileInput");
+
+const bottomUpload = document.getElementById("bottomUpload");
+const uploadIcon = document.getElementById("uploadIcon");
+const bottomUploadTitle = document.getElementById("bottomUploadTitle");
+const bottomUploadSub = document.getElementById("bottomUploadSub");
+const uploadPercent = document.getElementById("uploadPercent");
+const bottomProgressFill = document.getElementById("bottomProgressFill");
+
+let uploadTimer;
+
+function showBottomUpload(){
+    bottomUpload.classList.add("show");
+}
+
+function setUploadState(type){
+    bottomUpload.classList.remove("success","error");
+
+    if(type === "success"){
+        bottomUpload.classList.add("success");
+    }
+
+    if(type === "error"){
+        bottomUpload.classList.add("error");
+    }
+}
+
+fileInput.addEventListener("change", function(){
+    clearInterval(uploadTimer);
+
+    const files = Array.from(this.files);
+
+    if(files.length === 0){
+        return;
+    }
+
+    showBottomUpload();
+    setUploadState("normal");
+
+    bottomProgressFill.style.width = "0%";
+    uploadPercent.textContent = "0%";
+    uploadIcon.textContent = "📄";
+
+    const hasImage = files.some(file => file.type.startsWith("image/"));
+    const allPDF = files.every(file =>
+        file.type === "application/pdf" ||
+        file.name.toLowerCase().endsWith(".pdf")
+    );
+
+    if(hasImage || !allPDF){
+        uploadIcon.textContent = "🖼️";
+        bottomUploadTitle.textContent = "Checking file";
+        bottomUploadSub.textContent = "Please wait...";
+        uploadPercent.textContent = "";
+        bottomProgressFill.style.width = "25%";
+
+        setTimeout(() => {
+            setUploadState("error");
+            uploadIcon.textContent = "⚠️";
+            bottomUploadTitle.textContent = "Reupload the file";
+            bottomUploadSub.textContent = "Only PDF files are allowed";
+            uploadPercent.textContent = "";
+            bottomProgressFill.style.width = "100%";
+            fileInput.value = "";
+        }, 2000);
+
+        return;
+    }
+
+    let percentage = 0;
+
+    uploadIcon.textContent = "📄";
+    bottomUploadTitle.textContent = "Uploading document";
+    bottomUploadSub.textContent = files.length + " PDF file selected";
+    uploadPercent.textContent = "0%";
+    bottomProgressFill.style.width = "0%";
+
+    uploadTimer = setInterval(() => {
+        percentage += 4;
+
+        if(percentage > 100){
+            percentage = 100;
+        }
+
+        uploadPercent.textContent = percentage + "%";
+        bottomProgressFill.style.width = percentage + "%";
+
+        if(percentage >= 100){
+            clearInterval(uploadTimer);
+
+            setUploadState("success");
+            uploadIcon.textContent = "✅";
+            bottomUploadTitle.textContent = "File successfully uploaded";
+            bottomUploadSub.textContent = "Your PDF is ready for printing";
+            uploadPercent.textContent = "Done";
+            bottomProgressFill.style.width = "100%";
+        }
+    }, 90);
+});
+
+/* FAQ ACCORDION */
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+
+    question.addEventListener("click", () => {
+        faqItems.forEach(otherItem => {
+            if(otherItem !== item){
+                otherItem.classList.remove("active");
+            }
+        });
+
+        item.classList.toggle("active");
+    });
+});
+</script>
+
+</body>
+</html>
